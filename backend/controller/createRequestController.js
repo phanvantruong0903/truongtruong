@@ -3,7 +3,7 @@ const Request = require('../models/request.model')
 async function createRequest (req,res){
     try {
         const requestData = new Request(req.body);
-        await requestData.save();
+        console.log(requestData);
         res.status(201).json({
             data : requestData,
             error : false,
