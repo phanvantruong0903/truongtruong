@@ -15,6 +15,8 @@ import Geography from "./scenes/geography";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { ColorModeContext, useMode } from "./theme";
 import Calendar from "./scenes/calendar/calendar";
+import SendRequest from "./scenes/sendrequest/sendRequest";
+import Request from "./scenes/manageRequest/manageRequest";
 
 function App() {
   const [theme, colorMode] = useMode();
@@ -40,6 +42,8 @@ function App() {
               <Route path="/faq" element={<FAQ />} />
               <Route path="/calendar" element={<Calendar />} />
               <Route path="/geography" element={<Geography />} />
+              <Route path="/sendrequest" element={<SendRequest/>} />
+              <Route path="/managerequest" element={<Request/>}/>
             </Routes>
           </main>
         </div>
