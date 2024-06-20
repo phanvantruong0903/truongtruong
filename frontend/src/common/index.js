@@ -8,6 +8,10 @@ const SummaryApi = {
     getRequest : {
         url : `${backendDomain}/api/getRequest`,
         method : "get"
+    },
+    updateStatus :{
+        url :`${backendDomain}/api/updateStatus/:id`,
+        method : "put"
     }
 }
 
