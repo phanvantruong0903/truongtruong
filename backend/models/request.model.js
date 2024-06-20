@@ -21,7 +21,7 @@ const RequestSchemea = moongoose.Schema(
             type : Date,
             default: function() {
                 let currentDate = new Date();
-                currentDate.setDate(currentDate.getDate() + 7);
+                currentDate.setDate(currentDate.getDate() + 7).toLocaleString;
                 return currentDate;
               }
         },
