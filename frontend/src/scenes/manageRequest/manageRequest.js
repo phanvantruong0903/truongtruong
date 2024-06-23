@@ -10,7 +10,7 @@ import SummaryApi from "../../common";
 
 const Request = () => {
     const [request, setRequest] = useState([]);
-    
+
     useEffect(() => {
         const fetchRequestData = async () => {
             try {
@@ -43,6 +43,26 @@ const Request = () => {
         }
     };
 
+    function getStatusText(status) {
+        switch (status) {
+            case 1:
+                return 'Pending Progress';
+            case 0:
+                return 'Rejected';
+            case 2:
+                return 'In progress';
+            case 3:
+                return 'Received report';
+            case 4:
+                return 'Done';
+            case 5:
+                return 'Seal'
+            default:
+                return 'default';
+
+        }
+    }
+
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
     const columns = [
@@ -72,10 +92,18 @@ const Request = () => {
             field: "date",
             headerName: "Expired Date",
             flex: 1,
+            valueFormatter: params => {
+                const date = new Date(params.value);
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = date.getFullYear();
+                return `${day}-${month}-${year}`;
+            }
         },
         {
             field: "status",
             headerName: "Status",
+            valueGetter: (params) => getStatusText(params.row.status),
             flex: 1,
         },
         {
