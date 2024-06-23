@@ -1,14 +1,14 @@
-const Request = require ('../models/request.model')
+const Request = require('../models/request.model');
 
-async function getRequest (req,res){
+async function getRequest(req, res) {
     try {
-        const request = await Request.find({})
-        const list = new Array(...request)
-        res.json(list)
+        const requests = await Request.find();
+        const list = new Array(...requests); 
+        res.json(list); 
     } catch (error) {
-        res.status(200)
-        console.log(error);
+        console.error(error);
+        res.status(500).send('Internal Server Error'); // Trả về mã trạng thái 500 nếu có lỗi xảy ra
     }
 }
 
-module.exports = getRequest
+module.exports = getRequest;
